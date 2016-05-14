@@ -1,0 +1,301 @@
+{
+	"resultCode": "1",
+	"resultMsg": "查询拓扑图表成功",
+	"errorMsg": null,
+	"params": null,
+	"serviceSolvedTime": "耗时：914毫秒",
+	"objlist": [
+		{
+			"id": 1,
+			"name": "直通一线",
+			"parentId": 0,
+			"level": 1,
+			"extendId": 11,
+			"isScore": 1,
+			"score": 47,
+			"logical": null,
+			"weight": null,
+			"extends2": null,
+			"extends3": null,
+			"nodes": [
+				{
+					"id": 2,
+					"name": "10.20.16.69服务器",
+					"parentId": 1,
+					"level": 2,
+					"extendId": 10110,
+					"isScore": 1,
+					"score": 77,
+					"logical": 1,
+					"weight": 50,
+					"extends2": null,
+					"extends3": null,
+					"nodes": [
+						{
+							"id": 3,
+							"name": "硬件",
+							"parentId": 2,
+							"level": 3,
+							"extendId": 1,
+							"isScore": 1,
+							"score": 47,
+							"logical": 0,
+							"weight": 50,
+							"extends2": null,
+							"extends3": null,
+							"nodes": [
+								{
+									"id": 4,
+									"name": "CPU",
+									"parentId": 3,
+									"level": 4,
+									"extendId": 507,
+									"isScore": 1,
+									"score": 80,
+									"logical": 1,
+									"weight": 90,
+									"extends2": null,
+									"extends3": null,
+									"nodes": [
+										{
+											"id": 5,
+											"name": "中断每秒",
+											"parentId": 4,
+											"level": 5,
+											"extendId": 23891,
+											"isScore": 1,
+											"score": 80,
+											"logical": 0,
+											"weight": 80,
+											"extends2": null,
+											"extends3": null,
+											"nodes": [
+												{
+													"id": 3,
+													"name": "硬件",
+													"parentId": 2,
+													"level": 3,
+													"extendId": 1,
+													"isScore": 1,
+													"score": 47,
+													"logical": 0,
+													"weight": 50,
+													"extends2": null,
+													"extends3": null,
+													"nodes": [
+														{
+															"id": 4,
+															"name": "CPU",
+															"parentId": 3,
+															"level": 4,
+															"extendId": 507,
+															"isScore": 1,
+															"score": 80,
+															"logical": 1,
+															"weight": 90,
+															"extends2": null,
+															"extends3": null,
+															"nodes": [
+																{
+																	"id": 5,
+																	"name": "中断每秒",
+																	"parentId": 4,
+																	"level": 5,
+																	"extendId": 23891,
+																	"isScore": 1,
+																	"score": 80,
+																	"logical": 0,
+																	"weight": 80,
+																	"extends2": null,
+																	"extends3": null,
+																	"nodes": null
+																}, {
+																	"id": 6,
+																	"name": "处理器负载率(15分钟每核心)",
+																	"parentId": 4,
+																	"level": 5,
+																	"extendId": 23892,
+																	"isScore": 1,
+																	"score": 100,
+																	"logical": 1,
+																	"weight": 30,
+																	"extends2": null,
+																	"extends3": null,
+																	"nodes": null
+																}
+															]
+														}, {
+															"id": 18,
+															"name": "Filesystems",
+															"parentId": 3,
+															"level": 4,
+															"extendId": 508,
+															"isScore": 1,
+															"score": 10,
+															"logical": 1,
+															"weight": 80,
+															"extends2": null,
+															"extends3": null,
+															"nodes": [
+																{
+																	"id": 19,
+																	"name": "Free inodes on / (percentage)",
+																	"parentId": 18,
+																	"level": 5,
+																	"extendId": 23935,
+																	"isScore": 1,
+																	"score": 90,
+																	"logical": 0,
+																	"weight": 50,
+																	"extends2": null,
+																	"extends3": null,
+																	"nodes": null
+																}, {
+																	"id": 20,
+																	"name": "Free inodes on /opt (percentage)",
+																	"parentId": 18,
+																	"level": 5,
+																	"extendId": 23936,
+																	"isScore": 1,
+																	"score": 10,
+																	"logical": 0,
+																	"weight": 90,
+																	"extends2": null,
+																	"extends3": null,
+																	"nodes": null
+																}
+															]
+														}
+													]
+												}, {
+													"id": 228,
+													"name": "应用",
+													"parentId": 2,
+													"level": 3,
+													"extendId": 2,
+													"isScore": 1,
+													"score": 80,
+													"logical": null,
+													"weight": null,
+													"extends2": null,
+													"extends3": null,
+													"nodes": null
+												}, {
+													"id": 229,
+													"name": "业务",
+													"parentId": 2,
+													"level": 3,
+													"extendId": 3,
+													"isScore": 1,
+													"score": 90,
+													"logical": null,
+													"weight": null,
+													"extends2": null,
+													"extends3": null,
+													"nodes": null
+												}
+											]
+										}, {
+											"id": 6,
+											"name": "处理器负载率(15分钟每核心)",
+											"parentId": 4,
+											"level": 5,
+											"extendId": 23892,
+											"isScore": 1,
+											"score": 100,
+											"logical": 1,
+											"weight": 30,
+											"extends2": null,
+											"extends3": null,
+											"nodes": null
+										}
+									]
+								}, {
+									"id": 18,
+									"name": "Filesystems",
+									"parentId": 3,
+									"level": 4,
+									"extendId": 508,
+									"isScore": 1,
+									"score": 10,
+									"logical": 1,
+									"weight": 80,
+									"extends2": null,
+									"extends3": null,
+									"nodes": [
+										{
+											"id": 19,
+											"name": "Free inodes on / (percentage)",
+											"parentId": 18,
+											"level": 5,
+											"extendId": 23935,
+											"isScore": 1,
+											"score": 90,
+											"logical": 0,
+											"weight": 50,
+											"extends2": null,
+											"extends3": null,
+											"nodes": null
+										}, {
+											"id": 20,
+											"name": "Free inodes on /opt (percentage)",
+											"parentId": 18,
+											"level": 5,
+											"extendId": 23936,
+											"isScore": 1,
+											"score": 10,
+											"logical": 0,
+											"weight": 90,
+											"extends2": null,
+											"extends3": null,
+											"nodes": null
+										}
+									]
+								}
+							]
+						}, {
+							"id": 228,
+							"name": "应用",
+							"parentId": 2,
+							"level": 3,
+							"extendId": 2,
+							"isScore": 1,
+							"score": 80,
+							"logical": null,
+							"weight": null,
+							"extends2": null,
+							"extends3": null,
+							"nodes": null
+						}, {
+							"id": 229,
+							"name": "业务",
+							"parentId": 2,
+							"level": 3,
+							"extendId": 3,
+							"isScore": 1,
+							"score": 90,
+							"logical": null,
+							"weight": null,
+							"extends2": null,
+							"extends3": null,
+							"nodes": null
+						}
+					]
+				}, {
+					"id": 153,
+					"name": "10.20.16.120服务器",
+					"parentId": 1,
+					"level": 2,
+					"extendId": 10111,
+					"isScore": 1,
+					"score": 30,
+					"logical": null,
+					"weight": null,
+					"extends2": null,
+					"extends3": null,
+					"nodes": null
+				}
+			]
+		}
+	]
+}

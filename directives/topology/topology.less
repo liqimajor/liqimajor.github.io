@@ -1,0 +1,225 @@
+.pos-r {
+    position: relative;
+}
+
+.pos-a {
+    position: absolute;
+}
+.f_0 {
+    font-size: 0;
+}
+.herizon-tree {
+    font-size: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+    min-height: 400px;
+    padding-top: 20px;
+    ul {
+        display: inline-block;
+        vertical-align: middle;
+        list-style: none;
+        font-size: 14px;
+        margin: 0;
+    }
+    li {
+        position: relative;
+        padding: 5px 0;
+        &:not(:only-child)::after{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 1px;
+            height: 50%;
+            background: #000;
+            top: 0;
+            left: -40px;
+        }
+        &:not(:last-child)::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background: #000;
+            top: 0;
+            left: -40px;
+        }
+        &:first-of-type:not(:only-child)::after{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 1px;
+            height: 50%;
+            background: #000;
+            top: 50%;
+            left: -40px;
+        }
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 40px;
+            height: 1px;
+            background: #000;
+            top: 50%;
+            left: -40px;
+        }
+    }
+    .firstNode::before {
+        content: "";
+        display: none;
+    }
+    .firstNode:first-of-type::after {
+        content: "";
+        display: none;
+    }
+    .pNode {
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 14px;
+        padding-right: 40px;
+        position: relative;
+        white-space: normal;
+        &.expand::before {
+            background-image: url(./images/topology/icon-minus.png);
+        }
+        &.ancestor.expand::before {
+            background: none;
+        }
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url(./images/topology/icon-plus.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -24px;
+            z-index: 999;
+        }
+        &.ancestor::before {
+            background: none;
+        }
+        &.healthy {
+            .pName {
+                .score {
+                    background: #0ecc63;
+                }
+            }
+        }
+        .pName {
+            position: relative;
+            .score {
+                position: absolute;
+                top: -12px;
+                right: -20px;
+                padding: 0 3px;
+                line-height: 20px;
+                height: 24px;
+                background: #f00;
+                color: #fff;
+                border-radius: 12px;
+                border: solid 2px #fff;
+            }   
+            span {
+                display: inline-block;
+                width: 100%;
+            }
+        }
+        .segLine {
+            width: 20px;
+            height: 1px;
+            background: #000;
+            position: absolute;
+            top: 50%;
+            right: 0;            
+        }
+        &.ancestor {
+            &.healthy {
+                .pName {
+                    background: #0ecc63;
+                    .score {
+                        background: #0ecc63;
+                    }
+                }
+            }
+            .pName {
+                padding: 10px 40px;
+                background: #f00;
+                color: #fff;
+                border-radius: 5px 5px;
+                position: relative;
+                .score {
+                    position: absolute;
+                    top: -12px;
+                    right: -20px;
+                    padding: 0 3px;
+                    line-height: 20px;
+                    height: 24px;
+                    background: #f00;
+                    color: #fff;
+                    border-radius: 12px;
+                    border: solid 2px #fff;
+                }        
+            }
+        }
+    }
+    .childNode {
+        display: inline-block;
+        text-align: center;
+        white-space: normal;
+//      vertical-align: middle;
+        .pName {
+            position: relative;
+            span {
+                display: inline-block;
+                width: 100%;
+            }
+            .score {
+                position: absolute;
+//              top: -12px;
+                top: 0;
+//              left: 0;
+                right: -30px;
+                padding: 0 3px;
+                line-height: 20px;
+//              height: 24px;
+                background: #f00;
+                color: #fff;
+                border-radius: 12px;
+//              border: solid 2px #fff;
+            }   
+        }
+        &.healthy {
+            .pName {
+                .score {
+                    background: #0ecc63;
+                }
+            }
+        }
+//      span {
+//          display: inline-block;
+//          width: 100%;
+//      }
+    }
+}
+.topo-header {
+    background: #f9fafc;
+    h2{
+        line-height: 40px;
+        display: inline-block;
+        margin: 0;
+        font-size: 24px;
+        padding-left: 15px;
+    };
+    .refreshBtn {
+        padding: 10px;
+        float: right;
+    }
+}

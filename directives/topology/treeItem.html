@@ -1,0 +1,22 @@
+<div ng-click="itemExpanded(item, $event);" ng-class="{'healthy': item.score >= 60 , 'ancestor': !item.parentId, 'pNode': !isLeaf(item), 'childNode': isLeaf(item), 'expand': item.$$isExpand}">
+	<div class="pName">
+		<img src="./images/topology/icon-host-green.png" width="" ng-if="item.name.indexOf('服务器') != -1 && item.score >= 60"/>
+		<img src="./images/topology/icon-host-red.png" width="" ng-if="item.name.indexOf('服务器') != -1 && item.score < 60"/>
+		<img src="./images/topology/icon-business-green.png" width="" ng-if="item.name.indexOf('应用') != -1 && item.score >= 60"/>
+		<img src="./images/topology/icon-business-red.png" width="" ng-if="item.name.indexOf('应用') != -1 && item.score < 60"/>
+		<img src="./images/topology/icon-app-green.png" width="" ng-if="item.name.indexOf('业务') != -1 && item.score >= 60"/>
+		<img src="./images/topology/icon-app-red.png" width="" ng-if="item.name.indexOf('业务') != -1 && item.score < 60"/>
+		<img src="./images/topology/icon-hardware-green.png" width="" ng-if="item.name.indexOf('硬件') != -1 && item.score >= 60"/>
+		<img src="./images/topology/icon-hardware-red.png" width="" ng-if="item.name.indexOf('硬件') != -1 && item.score < 60"/>
+		<span ng-bind="::item.name">CPU</span>
+		<div class="score" ng-bind="::item.score" ng-if="item.score">
+			5.5分
+		</div>
+	</div>
+	<div class="segLine" ng-show="item.$$isExpand">
+	</div>
+</div>
+<ul ng-if="!isLeaf(item)" ng-show="item.$$isExpand">
+	<li ng-repeat="item in item.nodes" ng-class="{'f_0': !isLeaf(item)}" ng-include="'./directives/topology/treeItem.html'">
+    </li>
+</ul>
