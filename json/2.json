@@ -1,0 +1,36 @@
+{
+    "resultCode": "1",
+    "resultMsg": "查询拓扑图颜色配置表成功",
+    "errorMsg": null,
+    "params": null,
+    "serviceSolvedTime": "耗时：22毫秒",
+    "objlist": [
+        {
+            "scoresColourid": 3,
+            "groupid": 11,
+            "sMin": 80,
+            "sMax": 100,
+            "sColour": "green",
+            "description": "绿色",
+            "sSort": 3
+        },
+        {
+            "scoresColourid": 2,
+            "groupid": 11,
+            "sMin": 60,
+            "sMax": 80,
+            "sColour": "#66ccff",
+            "description": "黄色",
+            "sSort": 2
+        },
+        {
+            "scoresColourid": 1,
+            "groupid": 11,
+            "sMin": 0,
+            "sMax": 60,
+            "sColour": "#FF0000",
+            "description": "红色",
+            "sSort": 1
+        }
+    ]
+}

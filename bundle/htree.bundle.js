@@ -20,12 +20,19 @@ webpackJsonp([0,1],[
 			$http.get("./json/1.json").success(function(data){
 				if(data.resultCode != 1){
 					alert(data.resultMsg);
-					return
+					return;
 				}
 				console.log("get it");
 				parseTree(data.objlist);
 				$scope.treeData = data.objlist;
 				$scope.refreshTime = new Date().getTime();
+			});
+			$http.get('./json/2.json').success(function(data){
+				if(data.resultCode != 1){
+					alert(data.resultMsg);
+					return;
+				}
+				$scope.colorData = data.objlist;
 			});
 		};
 		$scope.getData();
@@ -35,7 +42,7 @@ webpackJsonp([0,1],[
 	        for (var i = 0, len = treeNodes.length; i < len; i++) {
 	            var childs = treeNodes[i].nodes;
 	            treeNodes[i].$$isExpand = true;
-	            if(treeNodes[i].level == 2){
+	            if(treeNodes[i].grade == 2){
 	            	continue;
 	            }
 	            if(childs && childs.length > 0){
@@ -40682,20 +40689,66 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(ngModule) {
-		ngModule.directive('topology', [topologyFn]);
+		ngModule.directive('topology', ["$http", topologyFn]);
 		__webpack_require__(9);
 
-		function topologyFn() {
+		function topologyFn($http) {
 			return {
 				restrict: 'E',
 				replace: true,
 				scope: {
 					trees: '=',
 					reftime: '=',
+					colors: '=',
 					refdata: '&'
 				},
 				template: __webpack_require__(11),
 				controller: function($scope) {
+					$scope.addNode = function(item, $event) {
+	                    $http.get('./json/2.json').success(function(data){
+							if(data.resultCode != 1){
+								alert(data.resultMsg);
+								return
+							}
+							item.nodes = [{
+		                            "id": 54,
+		                            "name": "孩子节点",
+		                            "parentId": 50,
+		                            "grade": 5,
+		                            "extendId": 24421,
+		                            "isScore": 1,
+		                            "score": 100,
+		                            "logic": 0,
+		                            "weight": null,
+		                            "extends2": null,
+		                            "extends3": null,
+		                            "nodes": null
+		                        }
+		                    ];
+						});
+					};
+					$scope.modeNode = function(item, $event) {
+						
+					};
+					$scope.delNode = function(item, $event) {
+						console.log(this);
+						console.log($scope);
+						delNode($scope.trees, item);
+					    function delNode(treeNodes, item){
+					        if (!treeNodes || !treeNodes.length) return;
+					        for (var i = 0, len = treeNodes.length; i < len; i++) {
+					            var childs = treeNodes[i].nodes;
+					            if(treeNodes[i].id == item.id){
+					            	treeNodes.splice(i, 1);
+					            	return;
+					            }
+					            if(childs && childs.length > 0){
+					                delNode(childs, item);
+					            }
+					        }
+					    }
+						$event.stopPropagation();
+					};
 					$scope.itemExpanded = function(item, $event) {
 						item.$$isExpand = !item.$$isExpand;
 						$event.stopPropagation();
@@ -40716,6 +40769,9 @@ webpackJsonp([0,1],[
 							$item: item,
 							$event: $event
 						});
+					};
+					$scope.isNumber = function(num) {
+						return typeof num == 'number';
 					};
 				},
 				link: function(scope, element, attrs, ctrl) {
@@ -40756,13 +40812,13 @@ webpackJsonp([0,1],[
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = ".pos-r {\n  position: relative;\n}\n.pos-a {\n  position: absolute;\n}\n.f_0 {\n  font-size: 0;\n}\n.herizon-tree {\n  font-size: 0;\n  padding: 0;\n  max-width: 100%;\n  overflow-x: scroll;\n  white-space: nowrap;\n  min-height: 400px;\n  padding-top: 20px;\n}\n.herizon-tree ul {\n  display: inline-block;\n  vertical-align: middle;\n  list-style: none;\n  font-size: 14px;\n  margin: 0;\n}\n.herizon-tree li {\n  position: relative;\n  padding: 5px 0;\n}\n.herizon-tree li:not(:only-child)::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 1px;\n  height: 50%;\n  background: #000;\n  top: 0;\n  left: -40px;\n}\n.herizon-tree li:not(:last-child)::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 1px;\n  height: 100%;\n  background: #000;\n  top: 0;\n  left: -40px;\n}\n.herizon-tree li:first-of-type:not(:only-child)::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 1px;\n  height: 50%;\n  background: #000;\n  top: 50%;\n  left: -40px;\n}\n.herizon-tree li::before {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 40px;\n  height: 1px;\n  background: #000;\n  top: 50%;\n  left: -40px;\n}\n.herizon-tree .firstNode::before {\n  content: \"\";\n  display: none;\n}\n.herizon-tree .firstNode:first-of-type::after {\n  content: \"\";\n  display: none;\n}\n.herizon-tree .pNode {\n  text-align: center;\n  display: inline-block;\n  vertical-align: middle;\n  font-size: 14px;\n  padding-right: 40px;\n  position: relative;\n  white-space: normal;\n}\n.herizon-tree .pNode.expand::before {\n  background-image: url(images/topology/icon-minus.png);\n}\n.herizon-tree .pNode.ancestor.expand::before {\n  background: none;\n}\n.herizon-tree .pNode::before {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  background-image: url(images/topology/icon-plus.png);\n  background-repeat: no-repeat;\n  background-position: center;\n  top: 50%;\n  transform: translateY(-50%);\n  left: -24px;\n  z-index: 999;\n}\n.herizon-tree .pNode.ancestor::before {\n  background: none;\n}\n.herizon-tree .pNode.healthy .pName .score {\n  background: #0ecc63;\n}\n.herizon-tree .pNode .pName {\n  position: relative;\n}\n.herizon-tree .pNode .pName .score {\n  position: absolute;\n  top: -12px;\n  right: -20px;\n  padding: 0 3px;\n  line-height: 20px;\n  height: 24px;\n  background: #f00;\n  color: #fff;\n  border-radius: 12px;\n  border: solid 2px #fff;\n}\n.herizon-tree .pNode .pName span {\n  display: inline-block;\n  width: 100%;\n}\n.herizon-tree .pNode .segLine {\n  width: 20px;\n  height: 1px;\n  background: #000;\n  position: absolute;\n  top: 50%;\n  right: 0;\n}\n.herizon-tree .pNode.ancestor.healthy .pName {\n  background: #0ecc63;\n}\n.herizon-tree .pNode.ancestor.healthy .pName .score {\n  background: #0ecc63;\n}\n.herizon-tree .pNode.ancestor .pName {\n  padding: 10px 40px;\n  background: #f00;\n  color: #fff;\n  border-radius: 5px 5px;\n  position: relative;\n}\n.herizon-tree .pNode.ancestor .pName .score {\n  position: absolute;\n  top: -12px;\n  right: -20px;\n  padding: 0 3px;\n  line-height: 20px;\n  height: 24px;\n  background: #f00;\n  color: #fff;\n  border-radius: 12px;\n  border: solid 2px #fff;\n}\n.herizon-tree .childNode {\n  display: inline-block;\n  text-align: center;\n  white-space: normal;\n}\n.herizon-tree .childNode .pName {\n  position: relative;\n}\n.herizon-tree .childNode .pName span {\n  display: inline-block;\n  width: 100%;\n}\n.herizon-tree .childNode .pName .score {\n  position: absolute;\n  top: 0;\n  right: -30px;\n  padding: 0 3px;\n  line-height: 20px;\n  background: #f00;\n  color: #fff;\n  border-radius: 12px;\n}\n.herizon-tree .childNode.healthy .pName .score {\n  background: #0ecc63;\n}\n.topo-header {\n  background: #f9fafc;\n}\n.topo-header h2 {\n  line-height: 40px;\n  display: inline-block;\n  margin: 0;\n  font-size: 24px;\n  padding-left: 15px;\n}\n.topo-header .refreshBtn {\n  padding: 10px;\n  float: right;\n}\n"
+	module.exports = "@font-face {\n  font-family: 'iconfont';\n  src: url('fonts/iconfont.eot');\n  /* IE9*/\n  src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/iconfont.woff') format('woff'), /* chrome、firefox */ url('fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('fonts/iconfont.svg#iconfont') format('svg');\n  /* iOS 4.1- */\n}\n.iconfont {\n  font-family: \"iconfont\" !important;\n  font-size: 30px;\n  font-style: normal;\n  -webkit-font-smoothing: antialiased;\n  -webkit-text-stroke-width: 0.2px;\n  -moz-osx-font-smoothing: grayscale;\n  color: #333;\n}\n.fnArea {\n  display: none;\n  position: absolute;\n  bottom: -16px;\n  left: 0;\n  width: 100%;\n  text-align: center;\n  white-space: nowrap;\n}\n.fnArea .iconfont {\n  font-size: 14px;\n  cursor: pointer;\n}\n.icon-del {\n  color: #f00;\n}\n.pos-r {\n  position: relative;\n}\n.pos-a {\n  position: absolute;\n}\n.f_0 {\n  font-size: 0;\n}\n.herizon-tree {\n  padding: 0;\n  max-width: 100%;\n  overflow-x: scroll;\n  white-space: nowrap;\n  min-height: 400px;\n  padding-top: 20px;\n}\n.herizon-tree ul {\n  display: inline-block;\n  vertical-align: middle;\n  list-style: none;\n  font-size: 14px;\n  margin: 0;\n}\n.herizon-tree li {\n  position: relative;\n  padding: 5px 0;\n}\n.herizon-tree li:not(:only-child)::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 1px;\n  height: 50%;\n  background: #000;\n  top: 0;\n  left: -40px;\n}\n.herizon-tree li:not(:last-child)::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 1px;\n  height: 100%;\n  background: #000;\n  top: 0;\n  left: -40px;\n}\n.herizon-tree li:first-of-type:not(:only-child)::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 1px;\n  height: 50%;\n  background: #000;\n  top: 50%;\n  left: -40px;\n}\n.herizon-tree li::before {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 40px;\n  height: 1px;\n  background: #000;\n  top: 50%;\n  left: -40px;\n}\n.herizon-tree .firstNode::before {\n  content: \"\";\n  display: none;\n}\n.herizon-tree .firstNode:first-of-type::after {\n  content: \"\";\n  display: none;\n}\n.herizon-tree .pNode {\n  text-align: center;\n  display: inline-block;\n  vertical-align: middle;\n  font-size: 14px;\n  padding-right: 40px;\n  position: relative;\n  white-space: normal;\n}\n.herizon-tree .pNode .itemIcon {\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  background-image: url(images/topology/icon-plus.png);\n  background-repeat: no-repeat;\n  background-position: center;\n  top: 50%;\n  transform: translateY(-50%);\n  left: -24px;\n  z-index: 999;\n}\n.herizon-tree .pNode.expand .itemIcon {\n  background-image: url(images/topology/icon-minus.png);\n}\n.herizon-tree .pNode.ancestor.expand::before {\n  background: none;\n}\n.herizon-tree .pNode.ancestor::before {\n  background: none;\n}\n.herizon-tree .pNode.healthy .pName .score {\n  background: #0ecc63;\n}\n.herizon-tree .pNode .pName {\n  position: relative;\n}\n.herizon-tree .pNode .pName:hover .fnArea {\n  display: block;\n}\n.herizon-tree .pNode .pName .score {\n  position: absolute;\n  top: -12px;\n  right: -20px;\n  padding: 0 3px;\n  line-height: 20px;\n  height: 24px;\n  background: #f00;\n  color: #fff;\n  border-radius: 12px;\n  border: solid 2px #fff;\n}\n.herizon-tree .pNode .pName span {\n  display: inline-block;\n  width: 100%;\n}\n.herizon-tree .pNode .segLine {\n  width: 20px;\n  height: 1px;\n  background: #000;\n  position: absolute;\n  top: 50%;\n  right: 0;\n}\n.herizon-tree .pNode.ancestor.healthy .pName {\n  background: #0ecc63;\n}\n.herizon-tree .pNode.ancestor.healthy .pName .score {\n  background: #0ecc63;\n}\n.herizon-tree .pNode.ancestor .pName {\n  padding: 10px 40px;\n  background: #f00;\n  color: #fff;\n  border-radius: 5px 5px;\n  position: relative;\n}\n.herizon-tree .pNode.ancestor .pName .score {\n  position: absolute;\n  top: -12px;\n  right: -20px;\n  padding: 0 3px;\n  line-height: 20px;\n  height: 24px;\n  background: #f00;\n  color: #fff;\n  border-radius: 12px;\n  border: solid 2px #fff;\n}\n.herizon-tree .childNode {\n  display: inline-block;\n  text-align: center;\n  white-space: normal;\n}\n.herizon-tree .childNode.ancestor .pName {\n  padding: 10px 40px;\n  color: #fff;\n  border-radius: 5px 5px;\n  position: relative;\n}\n.herizon-tree .childNode .pName {\n  position: relative;\n}\n.herizon-tree .childNode .pName:hover .fnArea {\n  display: block;\n}\n.herizon-tree .childNode .pName span {\n  display: inline-block;\n  width: 100%;\n}\n.herizon-tree .childNode .pName .score {\n  position: absolute;\n  top: 0;\n  right: -30px;\n  padding: 0 3px;\n  line-height: 20px;\n  background: #f00;\n  color: #fff;\n  border-radius: 12px;\n}\n.herizon-tree .childNode.healthy .pName .score {\n  background: #0ecc63;\n}\n.topo-header {\n  background: #f9fafc;\n}\n.topo-header h2 {\n  line-height: 40px;\n  display: inline-block;\n  margin: 0;\n  font-size: 24px;\n  padding-left: 15px;\n}\n.topo-header .refreshBtn {\n  padding: 10px;\n  float: right;\n  cursor: pointer;\n}\n"
 
 /***/ },
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"\">\n\t<div class=\"topo-header\">\n\t\t<h2>拓扑图&emsp;<small>刷新时间：<span ng-bind=\"reftime | date:'yyyy-MM-dd HH:mm:ss'\"></span></small></h2>\n\t\t<span class=\"refreshBtn\" ng-click=\"refdata()\"><img src=\"./images/topology/icon-refresh.png\"/></span>\n\t</div>\n\t<ul class=\"herizon-tree\">\n\t\t<li ng-repeat=\"item in trees\" ng-class=\"{'f_0': !isLeaf(item), 'firstNode': item.parentId == 0}\" ng-include=\"'./directives/topology/treeItem.html'\" ></li>\n\t</ul>\n</div>"
+	module.exports = "<div class=\"\">\n\t<div class=\"topo-header\">\n\t\t<h2>拓扑图&emsp;<small>刷新时间：<span ng-bind=\"reftime | date:'yyyy-MM-dd HH:mm:ss'\"></span></small></h2>\n\t\t<span class=\"refreshBtn\" ng-click=\"refdata()\"><img src=\"./images/topology/icon-refresh.png\"/></span>\n\t</div>\n\t<ul class=\"herizon-tree\">\n\t\t<li ng-repeat=\"item in trees\" ng-class=\"{'f_0': !isLeaf(item), 'firstNode': !item.parentId}\" ng-include=\"'./directives/topology/treeItem.html'\" ></li>\n\t</ul>\n</div>"
 
 /***/ }
 ]);

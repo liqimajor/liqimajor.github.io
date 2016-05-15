@@ -16,12 +16,19 @@ app.controller("myCtrl", ["$scope", "$http", function($scope, $http) {
 		$http.get("./json/1.json").success(function(data){
 			if(data.resultCode != 1){
 				alert(data.resultMsg);
-				return
+				return;
 			}
 			console.log("get it");
 			parseTree(data.objlist);
 			$scope.treeData = data.objlist;
 			$scope.refreshTime = new Date().getTime();
+		});
+		$http.get('./json/2.json').success(function(data){
+			if(data.resultCode != 1){
+				alert(data.resultMsg);
+				return;
+			}
+			$scope.colorData = data.objlist;
 		});
 	};
 	$scope.getData();
@@ -31,7 +38,7 @@ app.controller("myCtrl", ["$scope", "$http", function($scope, $http) {
         for (var i = 0, len = treeNodes.length; i < len; i++) {
             var childs = treeNodes[i].nodes;
             treeNodes[i].$$isExpand = true;
-            if(treeNodes[i].level == 2){
+            if(treeNodes[i].grade == 2){
             	continue;
             }
             if(childs && childs.length > 0){
