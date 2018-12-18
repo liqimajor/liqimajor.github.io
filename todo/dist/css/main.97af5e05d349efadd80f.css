@@ -1,0 +1,51 @@
+/*! xs build at 2018-12-14 14:53:59 */
+
+.btn-primary {
+  background: #66ccff;
+  color: #fff;
+}
+
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+.btn-default {
+  line-height: 28px;
+  height: 30px;
+  padding: 0 12px;
+}
+.router-link-active {
+  color: red;
+}
+.list-group-item {
+  padding: 5px 5px 5px 40px;
+}
+.list-group li {
+  line-height: 30px;
+  position: relative;
+}
+.btn-group {
+  float: right;
+  line-height: 0;
+}
+.list-group li::before {
+  content: "\2713";
+  border: 1px solid #000;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: transparent;
+  -webkit-transition: color ease .3s;
+  transition: color ease .3s;
+}
+.list-group li.finish::before {
+  color: #333;
+}
+
+
+/*# sourceMappingURL=main.97af5e05d349efadd80f.css.map*/
