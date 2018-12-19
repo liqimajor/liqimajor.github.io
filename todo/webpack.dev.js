@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 自动生成index.html
 const CleanWebpackPlugin = require('clean-webpack-plugin'); // 清理垃圾文件
@@ -34,8 +36,6 @@ const scssConfig = [
     }
 ]
 
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
 module.exports = merge(common, {
     mode: 'development',
     devtool: 'eval-source-map', // 如果只用source-map开发环境出现错误定位源文件，生产环境会生成map文件
