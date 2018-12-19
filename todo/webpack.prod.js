@@ -4,6 +4,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 自动生成index.html
 const CleanWebpackPlugin = require('clean-webpack-plugin'); // 清理垃圾文件
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const cssConfig = [{
     loader: MiniCssExtractPlugin.loader,
@@ -66,6 +67,9 @@ module.exports = merge(common, {
         new MiniCssExtractPlugin({ // 分离css
             filename: 'css/[name].[contenthash].css',
             // chunkFilename: isProd ? "css/[id].[contenthash].css" : '[id].css'
-        })
+        }),
+        new CopyWebpackPlugin([
+          { from: 'src/js', to: 'js' }
+        ])
     ]
 });

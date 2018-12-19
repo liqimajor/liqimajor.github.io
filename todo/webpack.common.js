@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin'); // vue加载器
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     entry: {
@@ -73,7 +74,12 @@ module.exports = {
         new webpack.NamedModulesPlugin(), // 热更新 HMR
         new webpack.ProvidePlugin({ // 配置第三方库
             $http: 'axios' // 在.vue文件中可以使用$http发送请求，不用每次都import Axios from 'axios';也不用挂载到vue原型链上
-        })
+        }),
+        new BundleAnalyzerPlugin(),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./manifest.json'),
+        }),
     ],
     optimization: {
         runtimeChunk: 'single', //提取runtime模板

@@ -44,7 +44,7 @@ module.exports = merge(common, {
         publicPath: '/'
     },
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(__dirname, 'src'),
         compress: true, // 开启Gzip压缩
         host: 'localhost', // 设置服务器的ip地址，默认localhost
         port: 9001, // 端口号
