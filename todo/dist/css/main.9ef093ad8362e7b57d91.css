@@ -1,33 +1,9 @@
-/*! xs build at 2018-12-19 20:40:37 */
-
-.btn-primary {
-  background: #66ccff;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 3px;
-  border: none;
-  cursor: pointer;
-}
-.fillArea {
-  padding: 10px 10px 10px 60px;
-  border: solid 1px #f0f0f0;
-  background: rgba(0, 0, 0, 0.003);
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.textInput {
-  border: none;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
+/*! xs build at 2018-12-20 20:43:27 */
 
 body {
   width: 100%;
   overflow-x: hidden;
+  background: #f5f5f5;
 }
 h1 {
   width: 100%;
@@ -84,6 +60,8 @@ h1 {
   line-height: 20px;
   text-align: center;
   cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
 }
 .checkbox::before {
   display: inline-block;
@@ -151,4 +129,53 @@ a {
 }
 
 
-/*# sourceMappingURL=main.8495db161aebef9c2632.css.map*/
+.fade-enter-active[data-v-5c6964f8],
+.fade-leave-active[data-v-5c6964f8] {
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+.fade-enter[data-v-5c6964f8],
+.fade-leave-to[data-v-5c6964f8] {
+  opacity: 0;
+}
+.message[data-v-5c6964f8] {
+  position: fixed;
+  top: 40px;
+  text-align: center;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  min-width: 400px;
+  padding: 10px 20px;
+  color: #999;
+  background: #f5f5f5;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 4px;
+  z-index: 1000;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.message.info[data-v-5c6964f8] {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+.message.success[data-v-5c6964f8] {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.message.warning[data-v-5c6964f8] {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+.message.error[data-v-5c6964f8] {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+
+/*# sourceMappingURL=main.9ef093ad8362e7b57d91.css.map*/

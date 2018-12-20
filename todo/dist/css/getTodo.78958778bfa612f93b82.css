@@ -1,0 +1,30 @@
+/*! xs build at 2018-12-20 20:43:27 */
+
+.btn-primary {
+  background: #66ccff;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+.fillArea {
+  padding: 10px 10px 10px 60px;
+  border: solid 1px #f0f0f0;
+  background: rgba(0, 0, 0, 0.003);
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #fff;
+  margin-bottom: 15px;
+}
+.textInput {
+  border: none;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+
+/*# sourceMappingURL=getTodo.78958778bfa612f93b82.css.map*/
