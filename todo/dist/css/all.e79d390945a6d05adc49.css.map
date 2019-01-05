@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/view/AllTodos.vue?15de"],"names":[],"mappings":";;AACA;AACA;AACA;AACA;AACA","file":"css/all.e79d390945a6d05adc49.css","sourcesContent":["\n.opt-check {\n  line-height: 30px;\n  padding: 10px 15px;\n  border-bottom: 1px solid #ededed;\n}\n"],"sourceRoot":""}

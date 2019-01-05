@@ -1,0 +1,32 @@
+/*! xs build at 2019-1-5 15:11:25 */
+
+.list-group-item {
+  line-height: 30px;
+  position: relative;
+  padding: 10px 15px;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  margin-top: -1px;
+}
+.list-group-item .opt-group {
+    font-size: 0;
+}
+.list-group-item:hover .icon-edit {
+    color: #718aea;
+}
+.list-group-item:hover .icon-del {
+    color: #f57055;
+}
+.list-group-item:hover .icon-wancheng {
+    color: #4cc483;
+}
+.list-group-item .iconfont {
+    cursor: pointer;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    color: #b9c3cd;
+}
+
+
+/*# sourceMappingURL=todoItem.3228bd413dc0008ae765.css.map*/

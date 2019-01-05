@@ -1,4 +1,4 @@
-/*! xs build at 2019-1-5 13:09:16 */
+/*! xs build at 2019-1-5 15:11:25 */
 
 body {
   width: 100%;
@@ -31,11 +31,6 @@ h1 {
   color: #66ccff;
   border-color: rgba(175, 47, 47, 0.2);
 }
-.list-group li {
-  line-height: 30px;
-  position: relative;
-  margin: 10px 0;
-}
 .view {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -48,27 +43,6 @@ h1 {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-}
-.btn-group {
-  float: right;
-  line-height: 0;
-}
-.checkbox {
-  border: 1px solid #000;
-  height: 20px;
-  width: 20px;
-  line-height: 20px;
-  text-align: center;
-  cursor: pointer;
-  display: inline-block;
-  margin-right: 10px;
-}
-.checkbox::before {
-  display: inline-block;
-  content: "\2713";
-  color: transparent;
-  -webkit-transition: color ease .3s;
-  transition: color ease .3s;
 }
 .list-inner {
   -webkit-transition: all 0.3s ease;
@@ -85,8 +59,9 @@ h1 {
   display: none;
   position: relative;
   margin: 0;
-  width: 100%;
+  width: calc(100% - 30px);
   height: 30px;
+  margin-left: 30px;
   font-family: inherit;
   font-weight: inherit;
   line-height: 1.4em;
@@ -119,13 +94,58 @@ a {
   padding: 10px 15px;
   text-align: center;
   border-top: 1px solid #e6e6e6;
-  margin-top: 15px;
+  margin-top: -1px;
 }
 .clear-completed {
   cursor: pointer;
 }
 .clear-completed:hover {
   text-decoration: underline;
+}
+.checkbox {
+  border: 1px solid #e1e4ed;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 2px;
+}
+.checkbox::before {
+  display: inline-block;
+  content: "\2713";
+  color: transparent;
+  -webkit-transition: color ease .3s;
+  transition: color ease .3s;
+}
+.wrapper {
+  background: #fff;
+  position: relative;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+.wrapper:before,
+.wrapper:after {
+  position: absolute;
+  content: "";
+  bottom: 25px;
+  left: 30px;
+  top: 80%;
+  width: 50%;
+  background: #ccc;
+  z-index: -1;
+  -webkit-box-shadow: 0px 20px 16px 13px #ccc;
+          box-shadow: 0px 20px 16px 13px #ccc;
+  -webkit-transform: rotate(-4deg);
+          transform: rotate(-4deg);
+}
+.wrapper:after {
+  -webkit-transform: rotate(4deg);
+          transform: rotate(4deg);
+  right: 30px;
+  left: auto;
 }
 
 
@@ -178,4 +198,4 @@ a {
 }
 
 
-/*# sourceMappingURL=main.96e329fd1a73c7bab303.css.map*/
+/*# sourceMappingURL=main.00d7526fcc20cf8731c6.css.map*/

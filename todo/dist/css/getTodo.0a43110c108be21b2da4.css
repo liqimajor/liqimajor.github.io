@@ -1,4 +1,4 @@
-/*! xs build at 2019-1-5 13:09:16 */
+/*! xs build at 2019-1-5 15:11:25 */
 
 .btn-primary {
   background: #66ccff;
@@ -9,7 +9,7 @@
   cursor: pointer;
 }
 .fillArea {
-  padding: 10px 10px 10px 60px;
+  padding: 10px;
   border: solid 1px #f0f0f0;
   background: rgba(0, 0, 0, 0.003);
   position: relative;
@@ -17,7 +17,6 @@
   display: -ms-flexbox;
   display: flex;
   background: #fff;
-  margin-bottom: 15px;
 }
 .textInput {
   border: none;
@@ -27,4 +26,4 @@
 }
 
 
-/*# sourceMappingURL=getTodo.ef249fb1f31b39654478.css.map*/
+/*# sourceMappingURL=getTodo.0a43110c108be21b2da4.css.map*/
