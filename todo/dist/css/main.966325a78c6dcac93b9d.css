@@ -1,4 +1,4 @@
-/*! xs build at 2019-1-5 15:11:25 */
+/*! xs build at 2019-1-7 11:25:48 */
 
 body {
   width: 100%;
@@ -26,6 +26,9 @@ h1 {
   height: 30px;
   padding: 0 12px;
   cursor: pointer;
+}
+.btn:hover {
+  background-color: #00aaff;
 }
 .router-link-active {
   color: #66ccff;
@@ -198,4 +201,4 @@ a {
 }
 
 
-/*# sourceMappingURL=main.00d7526fcc20cf8731c6.css.map*/
+/*# sourceMappingURL=main.966325a78c6dcac93b9d.css.map*/
