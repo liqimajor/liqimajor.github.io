@@ -1,9 +1,0 @@
-<div class="">
-	<div class="topo-header">
-		<h2>拓扑图&emsp;<small>刷新时间：<span ng-bind="reftime | date:'yyyy-MM-dd HH:mm:ss'"></span></small></h2>
-		<span class="refreshBtn" ng-click="refdata()"><img src="./images/topology/icon-refresh.png"/></span>
-	</div>
-	<ul class="herizon-tree">
-		<li ng-repeat="item in trees" ng-class="{'f_0': !isLeaf(item), 'firstNode': !item.parentId}" ng-include="'./directives/topology/treeItem.html'" ></li>
-	</ul>
-</div>
